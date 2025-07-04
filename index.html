@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/6f449e2c05.js" crossorigin="anonymous"></script>
+    <title>myDiary</title>
+</head>
+<body>
+    <header>
+        <h1>myDiary</h1>
+        <button onclick="showOption(settings)">
+            <i id="stickerIcon" class="fa-solid fa-2xl fa-gear"></i>
+        </button>
+        <ul class="settings">
+            <li onclick="showContainer(addPIN)">Set pin</li>
+        </ul>
+    </header>
+    
+    
+    <div class="fullDisplay">
+        <div id="addPIN" class="container" role="Add PIN">
+            <h2>Add PIN Number</h2><br>
+            <input type="number" id="addPINNumber" placeholder="PIN Number..." required><br>
+            <div class="dateAndSubmit">
+                <button class="submit close" onclick="showContainer(addPIN)">Cancel</button>
+                <button class="submit" onclick="removePIN()">Remove</button>
+                <button class="submit" onclick="addPINNumber()">Add</button>
+            </div>
+        </div>
+        
+        <div id="confirmPIN" class="container" role="Confirm PIN">
+            <h2>Confirm PIN</h2><br>
+            <form onsubmit="return confirmPINNumber()">
+                <input type="number" id="pinConfirmation" placeholder="Insert PIN Number..." required><br><br>
+                <button class="submit">Confirm</button>
+            </form>
+        </div>
+        
+        <div id="addDiaryContainer" class="container" role="Add diary">
+            <div class="space-between">
+                <h2>Add new diary</h2>
+                <button onclick="showContainer(addDiaryContainer)">
+                    <i id="stickerIcon" class="fa-solid fa-xl fa-x"></i>
+                </button>
+            </div><br>
+            <input type="text" id="diaryTitle" placeholder="Your diary title..."><br><br>
+            <textarea name="Diary Description" id="diaryDescription" rows="16" placeholder="What's today up to?"></textarea>
+            <div class="dateAndSubmit">
+                <input type="date" name="Diary date" id="diaryDate" data-date-format="DD MMMM YYYY" min="2000-01-01">
+                <input type="time" name="Diary time" id="diaryTime">
+                <button id="submitDiary" class="submit" onclick="addNewDiary()">Add</button>
+            </div>
+        </div>
+        
+        <div id="viewDiary" class="container" role="View diary">
+            <input type="text" id="title" readonly></input><br><br>
+            <textarea id="description" class="diaryFullDescription" rows="24" readonly>DiaryDescription</textarea>
+            <p id="timeAndDate">Time and date goes here....</p>
+            <div class="dateAndSubmit">
+                <button class="submit" id="removeDiary" onclick="removeDiary()">Remove</button>
+                <button class="submit" id="editDiary" onclick="editDiary()">Edit</button>
+                <button class="submit close" onclick="showContainer(viewDiary)">Close</button>
+            </div>
+        </div>
+    </div>
+    
+    <main id="main"></main>
+    
+    <button class="addDiary" onclick="showContainer(addDiaryContainer)">+</button>
+    <script src="script.js"></script>
+    <script src="diaries.js"></script>
+</body>
+</html>
