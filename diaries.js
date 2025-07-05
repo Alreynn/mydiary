@@ -3,11 +3,13 @@ const diaryTitle = document.getElementById('diaryTitle');
 const diaryDescription = document.getElementById('diaryDescription');
 const diaryDate = document.getElementById('diaryDate');
 const diaryTime = document.getElementById('diaryTime');
-
+const date = document.getElementById("date");
+const time = document.getElementById("time");
+            
 let selectedId = null;
 function loadDiaries() {
-    const load = (JSON.parse(localStorage.getItem('diary')) || []).sort((a, b) => new Date(b.date + 'T' + b.time) - new Date(a.date + 'T' + a.time));
-    load.sort((a, b) => new Date(b.date) - new Date(a.date));
+    const load = (JSON.parse(localStorage.getItem('diary')) || []).sort((latest, oldest) => new Date(oldest.date + 'T' + oldest.time) - new Date(latest.date + 'T' + latest.time));
+    load.sort((latest, oldest) => new Date(oldest.date) - new Date(latest.date));
     main.innerHTML = '';
     load.forEach(item => {
         const button = document.createElement('button');
@@ -18,8 +20,8 @@ function loadDiaries() {
             viewDiary.classList.toggle('show');
             const title = document.getElementById('title');
             const diaryFullDescription = document.querySelector(".diaryFullDescription");
-            const timeAndDate = document.getElementById("timeAndDate");
-            timeAndDate.innerText = `${item.date} ${item.time}`;
+            date.value = item.date;
+            time.value = item.time;
             
             selectedId = item.id;
             title.value = item.title;
@@ -55,6 +57,8 @@ function addNewDiary() {
         loadDiaries();
         diaryTitle.value = '';
         diaryDescription.value = '';
+    } else {
+        alert('Put up the date or one of the inputs.');
     }
 }
 let isOnEdit = false;
@@ -66,6 +70,8 @@ function editDiary() {
     if (!isOnEdit) {
         title.removeAttribute('readonly');
         description.removeAttribute('readonly');
+        date.removeAttribute('readonly');
+        time.removeAttribute('readonly');
         edit.innerText = 'Save';
         isOnEdit = true;
     } else {
@@ -74,6 +80,8 @@ function editDiary() {
             if (diaries[i].id === selectedId) {
                 diaries[i].title = title.value;
                 diaries[i].description = description.value;
+                diaries[i].date = date.value;
+                diaries[i].time = time.value;
                 break;
             }
         }
@@ -82,21 +90,26 @@ function editDiary() {
 
         title.setAttribute('readonly', 'true');
         description.setAttribute('readonly', 'true');
+        date.setAttribute('readonly', 'true');
+        time.setAttribute('readonly', 'true');
         edit.innerText = 'Edit';
         isOnEdit = false;
     }
 }
 function removeDiary() {
-    const diaries = JSON.parse(localStorage.getItem('diary')) || [];
-    for (let i = 0; i < diaries.length; i++) {
-        if (diaries[i].id === selectedId) {;
-            diaries.splice(i, 1);
-            break;
+    let confirmation = confirm('Do you agree to delete this diary?');
+    if (confirmation) {
+        const diaries = JSON.parse(localStorage.getItem('diary')) || [];
+        for (let i = 0; i < diaries.length; i++) {
+            if (diaries[i].id === selectedId) {;
+                diaries.splice(i, 1);
+                break;
+            }
         }
+        fullDisplay.classList.remove('show');
+        viewDiary.classList.remove('show');
+        localStorage.setItem('diary', JSON.stringify(diaries));
+        loadDiaries();
     }
-    fullDisplay.classList.remove('show');
-    viewDiary.classList.remove('show');
-    localStorage.setItem('diary', JSON.stringify(diaries));
-    loadDiaries();
 }
 loadDiaries();

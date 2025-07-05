@@ -9,13 +9,13 @@
     }
 }
 :root {
-  --header: #1f1d2b;
-  --body: #252437;
-  --option: #2e2c41;
-  --hover-option: #3c3a55;
-  --container: #302f4d;
-  --text: #f1f1f1;
-  --button: #ffafcc;
+    --header: #1f1d2b;
+    --body: #252437;
+    --option: #2e2c41;
+    --hover-option: #3c3a55;
+    --container: #302f4d;
+    --text: #f1f1f1;
+    --button: #ffafcc;
 }
 * {
     margin: 0;
@@ -32,6 +32,7 @@ header {
     place-items: center;
     background-color: var(--header);
     color: var(--text);
+    font-style: italic;
     padding: 20px;
     border-bottom: 1px solid var(--accent);
 }
@@ -135,7 +136,7 @@ input[type="text"], input[type="number"] {
     background: transparent;
 }
 #diaryDate {
-    width: 8em;
+    width: 9em;
 }
 #diaryTime {
     width: 6em;

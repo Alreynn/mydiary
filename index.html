@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="styles.css">
+    <meta property="og:description" content="Want to write something that happened today? myDiary is for you.">
     <script src="https://kit.fontawesome.com/6f449e2c05.js" crossorigin="anonymous"></script>
     <title>myDiary</title>
 </head>
@@ -18,7 +19,6 @@
             <li onclick="showContainer(addPIN)">Set pin</li>
         </ul>
     </header>
-    
     
     <div class="fullDisplay">
         <div id="addPIN" class="container" role="Add PIN">
@@ -46,10 +46,10 @@
                     <i id="stickerIcon" class="fa-solid fa-xl fa-x"></i>
                 </button>
             </div><br>
-            <input type="text" id="diaryTitle" placeholder="Your diary title..."><br><br>
-            <textarea name="Diary Description" id="diaryDescription" rows="16" placeholder="What's today up to?"></textarea>
+            <input type="text" id="diaryTitle" placeholder="My diary title..."><br><br>
+            <textarea name="Diary Description" id="diaryDescription" rows="16" placeholder="What's your day up to?"></textarea>
             <div class="dateAndSubmit">
-                <input type="date" name="Diary date" id="diaryDate" data-date-format="DD MMMM YYYY" min="2000-01-01">
+                <input type="date" name="Diary date" id="diaryDate" data-date-format="DD MMMM YYYY" min="1970-01-01" max="2999-12-31">
                 <input type="time" name="Diary time" id="diaryTime">
                 <button id="submitDiary" class="submit" onclick="addNewDiary()">Add</button>
             </div>
@@ -58,7 +58,10 @@
         <div id="viewDiary" class="container" role="View diary">
             <input type="text" id="title" readonly></input><br><br>
             <textarea id="description" class="diaryFullDescription" rows="24" readonly>DiaryDescription</textarea>
-            <p id="timeAndDate">Time and date goes here....</p>
+            <div class="dateAndSubmit">
+                <input type="date" id="date" data-date-format="DD MMMM YYYY" min="1970-01-01" max="2999-12-31" readonly>
+                <input type="time" id="time" readonly>
+            </div>
             <div class="dateAndSubmit">
                 <button class="submit" id="removeDiary" onclick="removeDiary()">Remove</button>
                 <button class="submit" id="editDiary" onclick="editDiary()">Edit</button>
