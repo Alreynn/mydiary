@@ -190,8 +190,8 @@ main {
     white-space: nowrap;
     text-overflow: ellipsis;
     word-break: break-word;
-    margin: 0 0 8px 0;
-    max-height: 1em;
+    margin: 0 0 4px 0;
+    max-height: 1.1em;
 }
 .addDiary {
     display: grid;

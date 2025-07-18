@@ -57,7 +57,7 @@
         
         <div id="viewDiary" class="container" role="View diary">
             <input type="text" id="title" readonly></input><br><br>
-            <textarea id="description" class="diaryFullDescription" rows="24" readonly>DiaryDescription</textarea>
+            <textarea id="description" class="diaryFullDescription" rows="16" readonly>DiaryDescription</textarea>
             <div class="dateAndSubmit">
                 <input type="date" id="date" data-date-format="DD MMMM YYYY" min="1970-01-01" max="2999-12-31" readonly>
                 <input type="time" id="time" readonly>
@@ -65,7 +65,7 @@
             <div class="dateAndSubmit">
                 <button class="submit" id="removeDiary" onclick="removeDiary()">Remove</button>
                 <button class="submit" id="editDiary" onclick="editDiary()">Edit</button>
-                <button class="submit close" onclick="showContainer(viewDiary)">Close</button>
+                <button class="submit close" id="closeDiary" onclick="showContainer(viewDiary)">Close</button>
             </div>
         </div>
     </div>

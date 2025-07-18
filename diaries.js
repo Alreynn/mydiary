@@ -64,6 +64,7 @@ function addNewDiary() {
 let isOnEdit = false;
 function editDiary() {
     const edit = document.getElementById('editDiary');
+    const close = document.getElementById('closeDiary');
     const title = document.getElementById('title');
     const description = document.getElementById('description');
 
