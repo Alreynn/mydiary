@@ -5,7 +5,7 @@ const diaryDate = document.getElementById('diaryDate');
 const diaryTime = document.getElementById('diaryTime');
 const date = document.getElementById("date");
 const time = document.getElementById("time");
-            
+
 let selectedId = null;
 function loadDiaries() {
     const load = (JSON.parse(localStorage.getItem('diary')) || []).sort((latest, oldest) => new Date(oldest.date + 'T' + oldest.time) - new Date(latest.date + 'T' + latest.time));
@@ -15,7 +15,7 @@ function loadDiaries() {
         const button = document.createElement('button');
         button.className = 'diaries';
         main.appendChild(button);
-        button.addEventListener('click', (funct) => {
+        button.addEventListener('click', () => {
             fullDisplay.classList.toggle('show');
             viewDiary.classList.toggle('show');
             const title = document.getElementById('title');
@@ -58,7 +58,7 @@ function addNewDiary() {
         diaryTitle.value = '';
         diaryDescription.value = '';
     } else {
-        alert('Put up the date or one of the inputs.');
+        alert('Put the date or one of the inputs.');
     }
 }
 let isOnEdit = false;
@@ -74,6 +74,7 @@ function editDiary() {
         date.removeAttribute('readonly');
         time.removeAttribute('readonly');
         edit.innerText = 'Save';
+        alert('Edit mode active.');
         isOnEdit = true;
     } else {
         const diaries = JSON.parse(localStorage.getItem('diary')) || [];
@@ -92,7 +93,7 @@ function editDiary() {
         title.setAttribute('readonly', 'true');
         description.setAttribute('readonly', 'true');
         date.setAttribute('readonly', 'true');
-        time.setAttribute('readonly', 'true');
+        time.setAttribute('readonly', 'true');;
         edit.innerText = 'Edit';
         isOnEdit = false;
     }

@@ -5,6 +5,8 @@ const addPIN = document.getElementById("addPIN")
 const confirmPIN = document.getElementById("confirmPIN")
 const settings = document.querySelector(".settings")
 
+const notifs = document.querySelector('.notifs');
+
 function showContainer(chosen) {
     fullDisplay.classList.toggle('show');
     chosen.classList.toggle('show');
@@ -17,11 +19,21 @@ function showOption(chosen) {
     chosen.classList.toggle('show');
 }
 
+const closeButton = document.querySelectorAll('button');
+closeButton.forEach((item) => {
+    if (item.classList.contains('close')) {
+        item.addEventListener('click', () => {
+            notifs.innerText = '';
+        })
+    }
+});
 function addPINNumber() {
     let pin = document.querySelector("#addPINNumber").value;
     if (pin !== '') {
         localStorage.setItem('PIN', pin);
-        alert('Pin added! Please remember your PIN afterwards.')
+        notifs.innerText = 'Pin added! Please remember your PIN afterwards.';
+    } else {
+        notifs.innerText = 'Pin cannot be empty.';
     }
 }
 if (localStorage.getItem('PIN')) {
@@ -32,7 +44,9 @@ if (localStorage.getItem('PIN')) {
 function removePIN() {
     if (localStorage.getItem('PIN')) {
         localStorage.removeItem('PIN');
-        alert('Pin removed!');
+        notifs.innerText = 'Pin removed!';
+    } else {
+        notifs.innerText = 'You don\'t have any PIN saved.';
     }
 }
 function confirmPINNumber() {

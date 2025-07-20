@@ -84,6 +84,9 @@ i {
 #addPIN.show {
     display: block;
 }
+.notifs {
+    margin-top: 4px;
+}
 #confirmPIN.show {
     display: block;
 }
@@ -208,4 +211,10 @@ main {
     aspect-ratio: 1;
     border: none;
     animation: pop 0.5s;
+}
+
+@media (min-width: 768px) {
+    .container, #viewDiary {
+        width: 50dvw;
+    }
 }

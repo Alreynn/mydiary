@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="styles.css">
-    <meta property="og:description" content="Want to write something that happened today? myDiary is for you.">
+    <meta name="description" content="Want to write something that happened today? myDiary is for you.">
+    <link rel="icon" type="image/jpeg" href="favicon.png">
     <script src="https://kit.fontawesome.com/6f449e2c05.js" crossorigin="anonymous"></script>
     <title>myDiary</title>
 </head>
@@ -24,6 +25,7 @@
         <div id="addPIN" class="container" role="Add PIN">
             <h2>Add PIN Number</h2><br>
             <input type="number" id="addPINNumber" placeholder="PIN Number..." required><br>
+            <span class="notifs"></span>
             <div class="dateAndSubmit">
                 <button class="submit close" onclick="showContainer(addPIN)">Cancel</button>
                 <button class="submit" onclick="removePIN()">Remove</button>
@@ -33,6 +35,7 @@
         
         <div id="confirmPIN" class="container" role="Confirm PIN">
             <h2>Confirm PIN</h2><br>
+            <span class="notifs"></span>
             <form onsubmit="return confirmPINNumber()">
                 <input type="number" id="pinConfirmation" placeholder="Insert PIN Number..." required><br><br>
                 <button class="submit">Confirm</button>
@@ -43,11 +46,12 @@
             <div class="space-between">
                 <h2>Add new diary</h2>
                 <button onclick="showContainer(addDiaryContainer)">
-                    <i id="stickerIcon" class="fa-solid fa-xl fa-x"></i>
+                    <i id="stickerIcon" class="fa-solid fa-xl fa-x close"></i>
                 </button>
             </div><br>
             <input type="text" id="diaryTitle" placeholder="My diary title..."><br><br>
             <textarea name="Diary Description" id="diaryDescription" rows="16" placeholder="What's your day up to?"></textarea>
+            <span class="notifs"></span>
             <div class="dateAndSubmit">
                 <input type="date" name="Diary date" id="diaryDate" data-date-format="DD MMMM YYYY" min="1970-01-01" max="2999-12-31">
                 <input type="time" name="Diary time" id="diaryTime">
@@ -56,6 +60,7 @@
         </div>
         
         <div id="viewDiary" class="container" role="View diary">
+            <span class="notifs"></span>
             <input type="text" id="title" readonly></input><br><br>
             <textarea id="description" class="diaryFullDescription" rows="16" readonly>DiaryDescription</textarea>
             <div class="dateAndSubmit">
