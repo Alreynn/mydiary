@@ -51,11 +51,12 @@
                 </button>
             </div><hr>
             <span>Font Size: </span>
-            <select>
-                <option onclick="setSize('16px, '12px')">Very Small</option>
-                <option onclick="setSize('18px, '14px')">Small</option>
-                <option onclick="setSize('20px', 16px')">Medium</option>
-                <option onclick="setSize('22px', 18px')">Large</option>
+            <select id="fontSizing" onchange="resize()">
+                <option value="d">Default</option>
+                <option value="xs">Very Small</option>
+                <option value="s">Small</option>
+                <option value="l">Large</option>
+                <option value="xl">Extra Large</option>
             </select>
         </div>
         

@@ -56,7 +56,30 @@ function confirmPINNumber() {
     pin === getPIN ? showPINContainer() : alert('Wrong PIN!');
     return false;
 }
-function setSize(title, description) {
-    diaryTitle.style.fontSize = title;
-    diaryDescription.style.fontSize = description;
+
+function resize() {
+    const inputs = document.querySelectorAll('.container input');
+    const textarea = document.querySelectorAll('.container textarea');
+    function repeatChange(inputSize, textareaSize) {
+        for (let i = 0; i <= textarea.length; i++) {
+            inputs[i].style.fontSize = inputSize;
+            textarea[i].style.fontSize = textareaSize;
+        }
+    }
+    const option = document.getElementById('fontSizing').value;
+    if (option === 'd') {
+        repeatChange('20px', '16px');
+    }
+    else if (option === 'xs') {
+        repeatChange('16px', '12px');
+    }
+    else if (option === 's') {
+        repeatChange('18px', '14px');
+    }
+    else if (option === 'l') {
+        repeatChange('22px', '18px');
+    }
+    else if (option === 'xl') {
+        repeatChange('24px', '20px');
+    }
 }
