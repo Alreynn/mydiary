@@ -2,8 +2,9 @@ const fullDisplay = document.querySelector(".fullDisplay");
 const addDiaryContainer = document.getElementById("addDiaryContainer")
 const viewDiary = document.getElementById("viewDiary")
 const addPIN = document.getElementById("addPIN")
+const optionsMore = document.getElementById("optionsMore")
 const confirmPIN = document.getElementById("confirmPIN")
-const settings = document.querySelector(".settings")
+const settingsList = document.querySelector(".settingsList")
 
 const notifs = document.querySelector('.notifs');
 
@@ -54,4 +55,8 @@ function confirmPINNumber() {
     const getPIN = localStorage.getItem('PIN');
     pin === getPIN ? showPINContainer() : alert('Wrong PIN!');
     return false;
+}
+function setSize(title, description) {
+    diaryTitle.style.fontSize = title;
+    diaryDescription.style.fontSize = description;
 }

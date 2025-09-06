@@ -8,7 +8,7 @@
         scale: 1;
     }
 }
-:root {
+:root { /* The main colors */
     --header: #1f1d2b;
     --body: #252437;
     --option: #2e2c41;
@@ -17,6 +17,7 @@
     --text: #f1f1f1;
     --button: #ffafcc;
 }
+/* Tags */
 * {
     margin: 0;
     padding: 0;
@@ -31,7 +32,6 @@ header {
     justify-content: space-between;
     place-items: center;
     background-color: var(--header);
-    color: var(--text);
     font-style: italic;
     padding: 20px;
     border-bottom: 1px solid var(--accent);
@@ -39,11 +39,27 @@ header {
 button {
     background: transparent;
     border: none;
+    color: #fff;
+}
+input, textarea {
+    background-color: var(--container);
+    color: var(--text);
+}
+input[type="text"], input[type="number"] {
+    font-size: 20px;
 }
 i {
     color: var(--text);
 }
-.settings {
+main {
+    padding: 16px;
+}
+hr {
+    border-color: rgba(255, 255, 255, 0.1);
+    margin: 4px 0 16px;
+}
+/* The main classes of the element */
+.settingsList {
     display: none;
     position: absolute;
     background-color: var(--option);
@@ -51,16 +67,23 @@ i {
     border-radius: 0 0 8px 8px;
     right: 16px;
 }
-.settings li {
+.settingsList li {
     display: block;
     padding: 12px;
 }
-.settings li:hover {
+.settingsList li:hover {
     background-color: var(--hover-option);
     border-radius: 0 0 8px 8px;
 }
-.settings.show {
-    display: block;
+select {
+    background: transparent;
+    color: #fff;
+    outline: none;
+    border: 1px solid #fff;
+    padding: 4px;
+    width: 50%;
+    font-size: .85em;
+    border-radius: 4px;
 }
 .fullDisplay {
     position: fixed;
@@ -71,30 +94,18 @@ i {
     background-color: hsla(0,100%,0%,0.500);
     z-index: 5;
 }
-.fullDisplay.show {
-    display: block;
-}
 .fullDisplay.pinConfirm {
     display: block;
     background-color: hsla(0,100%,0%,1);
 }
-#addDiaryContainer.show {
-    display: block;
-}
-#addPIN.show {
-    display: block;
-}
-.notifs {
-    margin-top: 4px;
-}
-#confirmPIN.show {
-    display: block;
+.formatting button {
+    border: 1px solid #fff;
+    border-bottom: none;
+    padding: 6px;
+    font-size: 1.1em;
 }
 #viewDiary {
     width: 80dvw;
-}
-#viewDiary.show {
-    display: block;
 }
 .container {
     display: none;
@@ -107,17 +118,10 @@ i {
     padding: 16px;
     border-radius: 8px;
 }
-input, textarea {
-    background-color: var(--container);
-    color: var(--text);
-}
 .space-between {
     display: flex;
     justify-content: space-between;
     place-items: center;
-}
-input[type="text"], input[type="number"] {
-    font-size: 1.2em;
 }
 .container input, textarea {
     font-family: Sans-Serif;
@@ -128,6 +132,10 @@ input[type="text"], input[type="number"] {
     width: 100%;
     resize: none;
     outline: none;
+}
+.container textarea {
+    border-radius: 0 0 4px 4px;
+    font-size: 16px;
 }
 .dateAndSubmit {
     display: flex;
@@ -161,9 +169,6 @@ input[type="text"], input[type="number"] {
 }
 .container button:active {
     background-color: hsla(0,100%,0%,0.100);
-}
-main {
-    padding: 16px;
 }
 .diaries {
     display: block;
@@ -211,6 +216,9 @@ main {
     aspect-ratio: 1;
     border: none;
     animation: pop 0.5s;
+}
+.show {
+    display: block;
 }
 
 @media (min-width: 768px) {

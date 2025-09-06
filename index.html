@@ -13,17 +13,18 @@
 <body>
     <header>
         <h1>myDiary</h1>
-        <button onclick="showOption(settings)">
+        <button onclick="showOption(settingsList)">
             <i id="stickerIcon" class="fa-solid fa-2xl fa-gear"></i>
         </button>
-        <ul class="settings">
-            <li onclick="showContainer(addPIN)">Set pin</li>
-        </ul>
     </header>
+    <ul class="settingsList">
+        <li onclick="showContainer(addPIN)">Set PIN</li>
+        <li onclick="showContainer(optionsMore)">More Options</li>
+    </ul>
     
     <div class="fullDisplay">
         <div id="addPIN" class="container" role="Add PIN">
-            <h2>Add PIN Number</h2><br>
+            <h2>Add PIN Number</h2><hr>
             <input type="number" id="addPINNumber" placeholder="PIN Number..." required><br>
             <span class="notifs"></span>
             <div class="dateAndSubmit">
@@ -34,12 +35,28 @@
         </div>
         
         <div id="confirmPIN" class="container" role="Confirm PIN">
-            <h2>Confirm PIN</h2><br>
+            <h2>Confirm PIN</h2><hr>
             <span class="notifs"></span>
             <form onsubmit="return confirmPINNumber()">
                 <input type="number" id="pinConfirmation" placeholder="Insert PIN Number..." required><br><br>
                 <button class="submit">Confirm</button>
             </form>
+        </div>
+        
+        <div id="optionsMore" class="container">
+            <div class="space-between">
+                <h2>More Options</h2>
+                <button onclick="showContainer(optionsMore)">
+                    <i id="stickerIcon" class="fa-solid fa-xl fa-x close"></i>
+                </button>
+            </div><hr>
+            <span>Font Size: </span>
+            <select>
+                <option onclick="setSize('16px, '12px')">Very Small</option>
+                <option onclick="setSize('18px, '14px')">Small</option>
+                <option onclick="setSize('20px', 16px')">Medium</option>
+                <option onclick="setSize('22px', 18px')">Large</option>
+            </select>
         </div>
         
         <div id="addDiaryContainer" class="container" role="Add diary">
@@ -48,13 +65,16 @@
                 <button onclick="showContainer(addDiaryContainer)">
                     <i id="stickerIcon" class="fa-solid fa-xl fa-x close"></i>
                 </button>
-            </div><br>
+            </div><hr>
             <input type="text" id="diaryTitle" placeholder="My diary title..."><br><br>
-            <textarea name="Diary Description" id="diaryDescription" rows="16" placeholder="What's your day up to?"></textarea>
+            <div class="formatting">
+                <button onclick="addToText('\t')">¶</button>
+            </div>
+            <textarea id="diaryDescription" rows="12" placeholder="What's your day up to?"></textarea>
             <span class="notifs"></span>
             <div class="dateAndSubmit">
-                <input type="date" name="Diary date" id="diaryDate" data-date-format="DD MMMM YYYY" min="1970-01-01" max="2999-12-31">
-                <input type="time" name="Diary time" id="diaryTime">
+                <input type="date" id="diaryDate" data-date-format="DD MMMM YYYY" min="1970-01-01" max="2999-12-31">
+                <input type="time" id="diaryTime">
                 <button id="submitDiary" class="submit" onclick="addNewDiary()">Add</button>
             </div>
         </div>
@@ -62,7 +82,10 @@
         <div id="viewDiary" class="container" role="View diary">
             <span class="notifs"></span>
             <input type="text" id="title" readonly></input><br><br>
-            <textarea id="description" class="diaryFullDescription" rows="16" readonly>DiaryDescription</textarea>
+            <div class="formatting">
+                <button onclick="addToText('\t')">¶</button>
+            </div>
+            <textarea id="description" class="diaryFullDescription" rows="12" readonly>DiaryDescription</textarea>
             <div class="dateAndSubmit">
                 <input type="date" id="date" data-date-format="DD MMMM YYYY" min="1970-01-01" max="2999-12-31" readonly>
                 <input type="time" id="time" readonly>
@@ -78,7 +101,8 @@
     <main id="main"></main>
     
     <button class="addDiary" onclick="showContainer(addDiaryContainer)">+</button>
-    <script src="script.js"></script>
-    <script src="diaries.js"></script>
+    <script src="./scripts/script.js"></script>
+    <script src="./scripts/diaries.js"></script>
+    <script src="./scripts/formatting.js"></script>
 </body>
 </html>

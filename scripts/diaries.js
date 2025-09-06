@@ -5,7 +5,12 @@ const diaryDate = document.getElementById('diaryDate');
 const diaryTime = document.getElementById('diaryTime');
 const date = document.getElementById("date");
 const time = document.getElementById("time");
+// I don't have any way to avoid these.
 
+// Set the default value of date and time input
+diaryDate.valueAsDate = new Date();
+
+// I hate this one bro
 let selectedId = null;
 function loadDiaries() {
     const load = (JSON.parse(localStorage.getItem('diary')) || []).sort((latest, oldest) => new Date(oldest.date + 'T' + oldest.time) - new Date(latest.date + 'T' + latest.time));
