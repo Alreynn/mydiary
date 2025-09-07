@@ -24,13 +24,13 @@
     
     <div class="fullDisplay">
         <div id="addPIN" class="container" role="Add PIN">
-            <h2>Add PIN Number</h2><hr>
+            <h2>Set PIN</h2><hr>
             <input type="number" id="addPINNumber" placeholder="PIN Number..." required><br>
             <span class="notifs"></span>
             <div class="dateAndSubmit">
-                <button class="submit close" onclick="showContainer(addPIN)">Cancel</button>
-                <button class="submit" onclick="removePIN()">Remove</button>
                 <button class="submit" onclick="addPINNumber()">Add</button>
+                <button class="submit" onclick="removePIN()">Remove</button>
+                <button class="submit close" onclick="showContainer(addPIN)">Cancel</button>
             </div>
         </div>
         
@@ -51,18 +51,17 @@
                 </button>
             </div><hr>
             <span>Font Size: </span>
-            <select id="fontSizing" onchange="resize()">
-                <option value="d">Default</option>
-                <option value="xs">Very Small</option>
-                <option value="s">Small</option>
-                <option value="l">Large</option>
-                <option value="xl">Extra Large</option>
+            <select>
+                <option onclick="setSize('16px, '12px')">Very Small</option>
+                <option onclick="setSize('18px, '14px')">Small</option>
+                <option onclick="setSize('20px', 16px')">Medium</option>
+                <option onclick="setSize('22px', 18px')">Large</option>
             </select>
         </div>
         
         <div id="addDiaryContainer" class="container" role="Add diary">
             <div class="space-between">
-                <h2>Add new diary</h2>
+                <h2>Add New Diary</h2>
                 <button onclick="showContainer(addDiaryContainer)">
                     <i id="stickerIcon" class="fa-solid fa-xl fa-x close"></i>
                 </button>
@@ -70,8 +69,10 @@
             <input type="text" id="diaryTitle" placeholder="My diary title..."><br><br>
             <div class="formatting">
                 <button onclick="addToText('\t')">¶</button>
+                <button onclick="addToText('– ')">–</button>
+                <button onclick="addToText('• ')">•</button>
             </div>
-            <textarea id="diaryDescription" rows="12" placeholder="What's your day up to?"></textarea>
+            <textarea id="diaryDescription" rows="10" placeholder="What's your day up to?"></textarea>
             <span class="notifs"></span>
             <div class="dateAndSubmit">
                 <input type="date" id="diaryDate" data-date-format="DD MMMM YYYY" min="1970-01-01" max="2999-12-31">
@@ -83,10 +84,12 @@
         <div id="viewDiary" class="container" role="View diary">
             <span class="notifs"></span>
             <input type="text" id="title" readonly></input><br><br>
-            <div class="formatting">
-                <button onclick="addToText('\t')">¶</button>
+            <div class="formatting" id="formattingEdit">
+                <button onclick="addToTextView('\t')">¶</button>
+                <button onclick="addToTextView('– ')">–</button>
+                <button onclick="addToTextView('• ')">•</button>
             </div>
-            <textarea id="description" class="diaryFullDescription" rows="12" readonly>DiaryDescription</textarea>
+            <textarea id="description" class="diaryFullDescription" rows="10" readonly>DiaryDescription</textarea>
             <div class="dateAndSubmit">
                 <input type="date" id="date" data-date-format="DD MMMM YYYY" min="1970-01-01" max="2999-12-31" readonly>
                 <input type="time" id="time" readonly>

@@ -5,6 +5,7 @@ const diaryDate = document.getElementById('diaryDate');
 const diaryTime = document.getElementById('diaryTime');
 const date = document.getElementById("date");
 const time = document.getElementById("time");
+const description = document.getElementById('description');
 // I don't have any way to avoid these.
 
 // Set the default value of date and time input
@@ -71,8 +72,8 @@ function editDiary() {
     const edit = document.getElementById('editDiary');
     const close = document.getElementById('closeDiary');
     const title = document.getElementById('title');
-    const description = document.getElementById('description');
 
+    const formatting = document.getElementById('formattingEdit');
     if (!isOnEdit) {
         title.removeAttribute('readonly');
         description.removeAttribute('readonly');
@@ -81,6 +82,7 @@ function editDiary() {
         edit.innerText = 'Save';
         alert('Edit mode active.');
         isOnEdit = true;
+        formatting.classList.add('show');
     } else {
         const diaries = JSON.parse(localStorage.getItem('diary')) || [];
         for (let i = 0; i < diaries.length; i++) {
@@ -92,13 +94,14 @@ function editDiary() {
                 break;
             }
         }
+        formatting.classList.remove('show');
         localStorage.setItem('diary', JSON.stringify(diaries));
         loadDiaries();
 
         title.setAttribute('readonly', 'true');
         description.setAttribute('readonly', 'true');
         date.setAttribute('readonly', 'true');
-        time.setAttribute('readonly', 'true');;
+        time.setAttribute('readonly', 'true');
         edit.innerText = 'Edit';
         isOnEdit = false;
     }
