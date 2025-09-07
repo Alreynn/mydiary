@@ -15,7 +15,7 @@
     --hover-option: #3c3a55;
     --container: #302f4d;
     --text: #f1f1f1;
-    --button: #ffafcc;
+    --button: #4E4187;
 }
 /* Tags */
 * {
@@ -106,6 +106,7 @@ select {
 }
 .formatting button {
     border: 1px solid #fff;
+    place-items: center;
     border-bottom: none;
     border-right: none;
     aspect-ratio: 1;
@@ -152,6 +153,7 @@ select {
     outline: none;
 }
 .container textarea {
+    height: 25dvh;
     border-radius: 0 4px 4px 4px;
     font-size: 16px;
 }
@@ -227,7 +229,7 @@ select {
     height: auto;
     place-items: center;
     background-color: var(--button);
-    color: var(--body);
+    color: rgba(255, 255, 255, 0.75);
     font-size: 2em;
     right: 0.5em;
     bottom: 2em;

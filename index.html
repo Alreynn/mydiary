@@ -50,12 +50,13 @@
                     <i id="stickerIcon" class="fa-solid fa-xl fa-x close"></i>
                 </button>
             </div><hr>
-            <span>Font Size: </span>
-            <select>
-                <option onclick="setSize('16px, '12px')">Very Small</option>
-                <option onclick="setSize('18px, '14px')">Small</option>
-                <option onclick="setSize('20px', 16px')">Medium</option>
-                <option onclick="setSize('22px', 18px')">Large</option>
+            <span>Set Input Font Size: </span>
+            <select id="fontSizing" onchange="resize(this)">
+                <option value="id">Default</option>
+                <option value="ixs">Very Small</option>
+                <option value="is">Small</option>
+                <option value="il">Large</option>
+                <option value="ixl">Very Large</option>
             </select>
         </div>
         
@@ -72,7 +73,7 @@
                 <button onclick="addToText('– ')">–</button>
                 <button onclick="addToText('• ')">•</button>
             </div>
-            <textarea id="diaryDescription" rows="10" placeholder="What's your day up to?"></textarea>
+            <textarea id="diaryDescription" placeholder="What's your day up to?"></textarea>
             <span class="notifs"></span>
             <div class="dateAndSubmit">
                 <input type="date" id="diaryDate" data-date-format="DD MMMM YYYY" min="1970-01-01" max="2999-12-31">
@@ -89,7 +90,7 @@
                 <button onclick="addToTextView('– ')">–</button>
                 <button onclick="addToTextView('• ')">•</button>
             </div>
-            <textarea id="description" class="diaryFullDescription" rows="10" readonly>DiaryDescription</textarea>
+            <textarea id="description" class="diaryFullDescription" readonly>DiaryDescription</textarea>
             <div class="dateAndSubmit">
                 <input type="date" id="date" data-date-format="DD MMMM YYYY" min="1970-01-01" max="2999-12-31" readonly>
                 <input type="time" id="time" readonly>

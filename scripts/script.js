@@ -4,7 +4,7 @@ const viewDiary = document.getElementById("viewDiary")
 const addPIN = document.getElementById("addPIN")
 const optionsMore = document.getElementById("optionsMore")
 const confirmPIN = document.getElementById("confirmPIN")
-const settingsList = document.querySelector(".settingsList")
+const settingsList = document.querySelector(".settingsList");
 
 const notifs = document.querySelector('.notifs');
 
@@ -28,6 +28,7 @@ closeButton.forEach((item) => {
         })
     }
 });
+
 function addPINNumber() {
     let pin = document.querySelector("#addPINNumber").value;
     if (pin !== '') {
@@ -38,7 +39,16 @@ function addPINNumber() {
     }
 }
 if (localStorage.getItem('PIN')) {
+    let pin = document.querySelector("#pinConfirmation");
     window.addEventListener('load', () => {
+        showPINContainer();
+    })
+    window.addEventListener('beforeunload', () => {
+        pin.value = '';
+        showPINContainer();
+    })
+    window.addEventListener('visibilitychange', () => {
+        pin.value = '';
         showPINContainer();
     })
 }
@@ -57,29 +67,39 @@ function confirmPINNumber() {
     return false;
 }
 
-function resize() {
-    const inputs = document.querySelectorAll('.container input');
-    const textarea = document.querySelectorAll('.container textarea');
+function loadFontSize() {
+    const options = localStorage.getItem('fontSize');
+    const inputs = document.querySelectorAll('input[type="text"], input[type="number"]');
+    const textareas = document.querySelectorAll('textarea');
     function repeatChange(inputSize, textareaSize) {
-        for (let i = 0; i <= textarea.length; i++) {
-            inputs[i].style.fontSize = inputSize;
-            textarea[i].style.fontSize = textareaSize;
-        }
+        inputs.forEach(item => {
+            item.style.fontSize = inputSize;
+        });
+        textareas.forEach(item => {
+            item.style.fontSize = textareaSize;
+        });
     }
-    const option = document.getElementById('fontSizing').value;
-    if (option === 'd') {
+    const fontSizing = document.getElementById('fontSizing');
+    options ? fontSizing.value = options : fontSizing.value = 'id';
+    
+    if (options === 'id') {
         repeatChange('20px', '16px');
     }
-    else if (option === 'xs') {
+    else if (options === 'ixs') {
         repeatChange('16px', '12px');
     }
-    else if (option === 's') {
+    else if (options === 'is') {
         repeatChange('18px', '14px');
     }
-    else if (option === 'l') {
+    else if (options === 'il') {
         repeatChange('22px', '18px');
     }
-    else if (option === 'xl') {
+    else if (options === 'ixl') {
         repeatChange('24px', '20px');
     }
 }
+function resize(element) {
+    localStorage.setItem('fontSize', element.value);
+    loadFontSize();
+}
+loadFontSize();
